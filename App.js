@@ -11,7 +11,8 @@ const App = () => {
   const [gigs, setGigs] = useState ([
     {
       description: 'Learn React Native',
-      amount: 490.99
+      amount: 490.99,
+      timestamp: new Date()
     }
   ]);
   useEffect(() => {
@@ -21,7 +22,8 @@ const App = () => {
   const addGigs = () => {
     setGigs([...gigs, {
       description: description,
-      amount: amount
+      amount: amount,
+      timestamp: new Date(),
     }])
 
     setDescription('');
@@ -33,20 +35,17 @@ const App = () => {
         <View style={styles.firstLabel}>
             <Text style={styles.titleText}>Live-React-Native</Text>
         </View>
+        
         <View>
           <Text>Bezier Line Chart</Text>
           <LineChart style={styles.chart}
             data={{
-              labels: ["January", "February", "March", "April", "May", "June"],
+              labels: [new Date(), "Tomorrow"],
               datasets: [
                 {
                   data: [
+                    gigs[0].amount * 100,
                     Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100
                   ]
                 }
               ]
@@ -58,9 +57,9 @@ const App = () => {
             yAxisInterval={1} // optional, defaults to 1
             chartConfig={{
               backgroundColor: "#e26a00",
-              backgroundGradientFrom: "#fb8c00",
-              backgroundGradientTo: "#ffa726",
-              decimalPlaces: 2, // optional, defaults to 2dp
+              backgroundGradientFrom: "green",
+              backgroundGradientTo: "green",
+              decimalPlaces: 1, // optional, defaults to 2dp
               color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
               labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
               style: {
@@ -69,7 +68,7 @@ const App = () => {
               propsForDots: {
                 r: "6",
                 strokeWidth: "2",
-                stroke: "#ffa726"
+                stroke: "yellow"
               }
             }}
             bezier

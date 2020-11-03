@@ -13,6 +13,11 @@ const App = () => {
       description: 'Learn React Native',
       amount: 490.99,
       timestamp: new Date()
+    },
+    {
+      description: 'Learn React Native',
+      amount: 490.99,
+      timestamp: new Date()
     }
   ]);
   useEffect(() => {
@@ -45,6 +50,7 @@ const App = () => {
                 {
                   data: [
                     gigs[0].amount * 100,
+                    gigs[1].amount * 100,
                     Math.random() * 100,
                   ]
                 }
